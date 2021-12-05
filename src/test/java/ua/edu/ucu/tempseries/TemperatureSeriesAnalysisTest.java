@@ -149,6 +149,13 @@ public class TemperatureSeriesAnalysisTest {
 
         assertArrayEquals(expResult, actualResult, 0.00001);
     }
+    
+    @Test(expected = InputMismatchException.class)
+    public void testAddWithWrongValues() {
+        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis();
+
+        seriesAnalysis.addTemps(-275.0, 20.0);
+    }
 
     @Test
     public void testSummaryStatistics() {
