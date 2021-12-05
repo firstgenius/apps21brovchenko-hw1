@@ -164,7 +164,7 @@ public class TemperatureSeriesAnalysis {
             }
         }
         int var = temperatureSeries.length;
-        while (var < temps.length){
+        while (var < temps.length) {
             var = var * 2;
         }
 
