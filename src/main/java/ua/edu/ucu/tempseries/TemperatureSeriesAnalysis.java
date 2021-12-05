@@ -3,10 +3,9 @@ package ua.edu.ucu.tempseries;
 import java.util.InputMismatchException;
 import java.util.Arrays;
 
-import static java.lang.Math.abs;
-
 public class TemperatureSeriesAnalysis {
     private double[] temperatureSeries;
+    private int bound = -273;
 
     public TemperatureSeriesAnalysis() {
         this.temperatureSeries = new double[0];
@@ -14,7 +13,7 @@ public class TemperatureSeriesAnalysis {
 
     public TemperatureSeriesAnalysis(double[] temperatureSeries) {
         for (double temperature : temperatureSeries) {
-            if (temperature < -273) {
+            if (temperature < bound) {
                 throw new InputMismatchException();
             }
         }
@@ -86,8 +85,8 @@ public class TemperatureSeriesAnalysis {
         }
         double closest = Double.POSITIVE_INFINITY;
         for (double temperature: temperatureSeries) {
-            if (closest > abs(temperature)) {
-                closest = abs(temperature);
+            if (closest > Math.abs(temperature)) {
+                closest = Math.abs(temperature);
             }
         }
         return closest;
@@ -100,8 +99,8 @@ public class TemperatureSeriesAnalysis {
         double finClosest = Double.POSITIVE_INFINITY;
         double closest = Double.POSITIVE_INFINITY;
         for (double temperature: temperatureSeries) {
-            if (closest > abs(tempValue - temperature)) {
-                closest = abs(tempValue - temperature);
+            if (closest > Math.abs(tempValue - temperature)) {
+                closest = Math.abs(tempValue - temperature);
                 finClosest = temperature;
             }
         }
@@ -159,7 +158,7 @@ public class TemperatureSeriesAnalysis {
 
     public int addTemps(double... temps) {
         for (double temp: temps) {
-            if (temp < -273) {
+            if (temp < bound) {
                 throw new InputMismatchException();
             }
         }
